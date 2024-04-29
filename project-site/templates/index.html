@@ -40,40 +40,37 @@
             e.preventDefault();
             const formData = new FormData(this);
             formData.append('patientName', document.getElementById('patientName').value);
-            for (var pair of formData.entries()) {
-                console.log(pair[0]+ ', ' + pair[1]); 
-            }
             const resultDiv = document.getElementById('result');
             resultDiv.innerHTML = 'Processing...';
-
-                    fetch('/analyze', {
+        
+            fetch('/analyze', {
                 method: 'POST',
                 body: formData,
             }).then(response => response.json())
             .then(data => {
-                resultDiv.innerHTML = `<h5>Results:</h5>` +
+                resultDiv.innerHTML = `<h5>Results for ${data.patientName}:</h5>` +
                 `<p>Processed Images: ${data.processedImages}</p>` +
                 `<p>Baseline Model: ${data.baselineResult}</p>` +
                 `<p>Augmented Model: ${data.augmentedResult}</p>` +
-                `<p>VGG16 Model: ${data.vgg16Result}</p>`;  // Include VGG16 results
+                `<p>VGG16 Model: ${data.vgg16Result}</p>`;
             }).catch(error => {
                 resultDiv.innerHTML = `<p>An error occurred: ${error.message}</p>`;
             });
         });
-
+        
         document.querySelector('.custom-file-input').addEventListener('change', function(e) {
-        var files = e.target.files;
-        var filePath = e.target.value;
-        var nextSibling = e.target.nextElementSibling;
-
-        if(files.length > 0 && files[0].webkitRelativePath) {
-            var folder = files[0].webkitRelativePath.split('/')[0]; // Get the folder name from the first file's path
-            nextSibling.innerText = folder;
-        } else {
-            nextSibling.innerText = "Folder selected";
-        }
-    });
-
-    </script>
+            var files = e.target.files;
+            var filePath = e.target.value;
+            var nextSibling = e.target.nextElementSibling;
+        
+            if(files.length > 0 && files[0].webkitRelativePath) {
+                var folder = files[0].webkitRelativePath.split('/')[0]; // Get the folder name from the first file's path
+                nextSibling.innerText = folder;
+            } else {
+                nextSibling.innerText = "Folder selected";
+            }
+        });
+        </script>
+        
 </body>
 </html>

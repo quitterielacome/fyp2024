@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <a class="navbar-brand" href="/history">History</a>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Analysis History</h1>
+        
+        <!-- Button to Reset History -->
+        <button type="button" class="btn btn-danger mb-3" id="reset-history-button">Reset History</button>
+
+        <ul class="list-group" id="history-list">
+            {% for entry in history %}
+                <li class="list-group-item">
+                    <h5>Results for: {{ entry.patientName }}</h5>
+                    <ul>
+                        {% for result in entry.results %}
+                            <li>{{ result.model }}: {{ result.result }}, Confidence: {{ result.confidence }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        
+    </div>
+
+    <!-- Bootstrap JS and its dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.11/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        document.getElementById('reset-history-button').addEventListener('click', function() {
+            fetch('/delete_history', {
+                method: 'POST',
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Update the history list with an empty message
+                document.getElementById('history-list').innerHTML = '<li class="list-group-item">History has been reset.</li>';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error if needed
+            });
+        });
+    </script>
+</body>
+</html>

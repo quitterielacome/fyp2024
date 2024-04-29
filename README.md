@@ -173,7 +173,7 @@ Once the application is running, follow these steps to use it:
 
 1. **Enter Patient Name:** On the home page, enter the name of the patient whose MRI scans you want to analyse.
 2. **Upload MRI Scan:** Upload the DICOM folder for the patient. Ensure that the folder structure is correct and that the files are in the supported DICOM format.
-3. **Submit for Analysis:** Click the 'Analyse' button to submit the data. The application will process the MRI scans and use the pretrained models to predict the methylation status.
+3. **Submit for Analysis:** Click the 'Analyse' button to submit the data. The application will process the MRI scans and use the pre-trained models to predict the methylation status.
 4. **View Predictions:** The results, including the prediction and confidence rate for each model, will be displayed on the results page. Review the predictions and the associated confidence levels.
 
 5. **Navigate History:** If enabled, you can view past analyses by navigating to the 'History' section via the application's menu. This feature lets you compare current results with past results for the same or different patients.
@@ -195,7 +195,7 @@ These results indicate that the Transfer Learning Model outperformed the other m
 
 ## Demonstrations
 - Screenshots and outputs are included within the Colab notebook.
-- For a more detailed walkthrough, refer to the presentation linked [here](presentation).
+- For a more detailed walkthrough, refer to the presentation linked [here]((https://universityofexeteruk-my.sharepoint.com/:f:/r/personal/qmad201_exeter_ac_uk/Documents/FYP_2024/REPORT%20AND%20PRESENTATION?csf=1&web=1&e=ztB2DN)).
 
 ## Contact
 For any queries or further discussion, please contact [Quitterie Lacome d'Estalenx](quitterie@estalenx.com).

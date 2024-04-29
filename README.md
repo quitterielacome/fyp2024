@@ -124,8 +124,8 @@ For those interested in training the models themselves or understanding the enti
 1. **Open the Notebook**: The notebook `pred_MGMT.ipynb` is located in the main directory of the project. You can open this notebook using Jupyter Notebook or JupyterLab, or through Google Colab if you prefer an online environment.
 
 ```bash
-   cd pred_MGMT/
-   jupyter notebook pred_MGMT.ipynb
+cd pred_MGMT/
+jupyter notebook pred_MGMT.ipynb
 ```
 
 Alternatively, if you are using Google Colab:

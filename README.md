@@ -4,7 +4,7 @@ This project develops and evaluates three deep-learning models of different comp
 
 ## Aims and Motivations
 
-This project is dedicated to enhancing glioma diagnosis by using deep learning to non-invasively predict the MGMT promoter methylation status from MRI scans. We evaluate three models of varying complexities—ranging from simple to advanced architectures—to determine if more complex models consistently yield better predictive accuracy and efficiency. This comparative analysis aims to identify the most effective model configuration for guiding personalised chemotherapy treatments, ultimately improving patient care by circumventing invasive biopsy procedures.
+This project is dedicated to enhancing glioma diagnosis by using deep learning to predict the MGMT promoter methylation status from MRI scans non-invasively. We evaluate three models of varying complexities—ranging from simple to advanced architectures—to determine if more complex models consistently yield better predictive accuracy and efficiency. This comparative analysis aims to identify the most effective model configuration for guiding personalised chemotherapy treatments, ultimately improving patient care by circumventing invasive biopsy procedures.
 
 
 ## Models Evaluated
@@ -15,7 +15,54 @@ This project is dedicated to enhancing glioma diagnosis by using deep learning t
 
 ## Dataset
 
-The project utilises the RSNA-MICCAI Brain Tumor Radiogenomic Classification dataset, which is substantial in size (over 130GB). Due to this large size, the dataset is not included in the repository and must be downloaded separately. The dataset consists of 1006 patients' brain MRI images in FLAIR, T1w, T1wCE and T2w modalities, stored in DICOM format.
+The project utilises the RSNA-MICCAI Brain Tumor Radiogenomic Classification dataset, which is substantial in size (over 130GB). Due to this large size, the dataset is not included in the repository and must be downloaded separately. The dataset consists of 1006 patients' brain MRI images in FLAIR (Fluid Attenuated Inversion Recovery), T1w (T1-weighted pre-contrast), T1wCE (T1-weighted post-contrast) and T2w (T2-weighted) modalities, stored in DICOM format.
+
+### Dataset Structure
+
+```
+Training/Validation/Testing
+│
+└─── 00000
+│   │
+│   └─── FLAIR
+│   │   │ Image-1.dcm
+│   │   │ Image-2.dcm
+│   │   │ ...
+│   │   
+│   └─── T1w
+│   │   │ Image-1.dcm
+│   │   │ Image-2.dcm
+│   │   │ ...
+│   │   
+│   └─── T1wCE
+│   │   │ Image-1.dcm
+│   │   │ Image-2.dcm
+│   │   │ ...
+│   │   
+│   └─── T2w
+│   │   │ Image-1.dcm
+│   │   │ Image-2.dcm
+│   │   │ .....
+│   
+└─── 00001
+│   │ ...
+│   
+│ ...   
+│   
+└─── 00002
+│   │ ...
+
+```
+
+### Files
+
+- train/ - folder containing the training files
+
+- test/ - the test files, which use the same structure as train/
+
+- train_labels.csv - file containing the target MGMT_value for each subject in the training data
+
+- sample_submission.csv - a sample submission file in the correct format
 
 ## Downloading the Dataset from Kaggle
 
